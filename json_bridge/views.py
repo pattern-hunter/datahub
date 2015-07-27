@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext, loader
+from django.contrib.auth import authenticate,login,logout
 from  pymongo import MongoClient 
 
 
@@ -24,6 +25,23 @@ def view_data(request):
 #jump to dashboard
 
 def dashboard_view(request):
-	template = loader.get_template('json_bridge/dashboard.html')
-	context = RequestContext(request, {})
-	return HttpResponse(template.render(context))
+	if request.user.is_authenticated():
+		template = loader.get_template('json_bridge/dashboard.html')
+		context = RequestContext(request, {})
+		return HttpResponse(template.render(context))
+	else:
+		return HttpResponseRedirect('/')
+
+#authentication
+
+def auth_view(request):
+	user=authenticate(email='ankit9.7.91@gmail.com',password='ankit')
+	if user is not None:
+		login(request,user)
+		return HttpResponseRedirect('/dashboard/') 
+	else:
+		return HttpResponseRedirect('/')
+
+def logout_view(request):
+	logout(request)
+	return HttpResponseRedirect('/')
