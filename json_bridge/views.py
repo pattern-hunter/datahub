@@ -20,3 +20,9 @@ def view_data(request):
 	template = loader.get_template('json_bridge/index.html')
     	context = RequestContext(request, {'data':data})
 	return HttpResponse(template.render(context))
+
+#jump to dashboard
+
+def dashboard_view(request):
+	template = loader.get_template('json_bridge/dashboard.html')
+	return HttpResponse(template)
