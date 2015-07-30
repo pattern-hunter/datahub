@@ -35,7 +35,9 @@ def dashboard_view(request):
 #authentication
 
 def auth_view(request):
-	user=authenticate(email='ankit9.7.91@gmail.com',password='ankit')
+	username = request.POST['username']
+        password = request.POST['password']
+	user=authenticate(username=username,password=password)
 	if user is not None:
 		login(request,user)
 		return HttpResponseRedirect('/dashboard/') 
