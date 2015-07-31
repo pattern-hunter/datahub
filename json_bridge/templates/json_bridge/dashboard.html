@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<html>
+
+<head>
+<title>Dashboard|datahub</title>
+<link rel="stylesheet" type="text/css" href="{% static 'json_bridge/css/bootstrap.min.css' %}" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{% static 'json_bridge/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body background="{% static 'json_bridge/banner.jpg' %}" >
+<div class="fluid-container"> 
+  <nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+     <div class="navbar-header">
+       <a class="navbar-brand" href="#">DataHub | {{user}}</a>
+     </div>
+   <form class="navbar-form navbar-right">
+	<a href="/logout/"><button type="button" class="btn btn-default"  >logout</button></a>
+   </form>
+   </div>
+  </nav>
+  
+  <div class="row" style="margin-right: 15px;margin-left: 15px;">
+	<div class="col-md-4" >
+		<div class="panel panel-default" >
+			<div class="panel-heading">
+				<h3 class="panel-title">DataSet</h3>
+			</div>
+			<div class="panel-body" style="height:470px;overflow:auto;">
+				<!--backend code-->
+				<div class="list-group">
+					<a href="#" class="list-group-item" onclick="loadSet();" >dataset1</a>
+					<a href="#" class="list-group-item">dataset2</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-8" >
+		 <div class=panel panel-default>
+                        <div id="set"  class="panel-body" style="height:510px;overflow:auto;" >       
+                        </div>
+                </div>
+	</div>
+  </div>
+
+</div>
+
+<script>
+function loadSet()
+{
+document.getElementById("set").innerHTML="";
+}
+</script>
+</body>
+</html>
+
