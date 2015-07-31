@@ -30,7 +30,7 @@
 			<div class="panel-body" style="height:470px;overflow:auto;">
 				<!--backend code-->
 				<div class="list-group">
-					<a href="#" class="list-group-item">dataset1</a>
+					<a href="#" class="list-group-item" onclick="loadSet();" >dataset1</a>
 					<a href="#" class="list-group-item">dataset2</a>
 				</div>
 			</div>
@@ -39,17 +39,20 @@
 	
 	<div class="col-md-8" >
 		 <div class=panel panel-default>
-                        <div class="panel-body" style="height:510px;overflow:auto;" >
-                                <!--backend code-->
-				{% for row in data %}
-	                        <h3>{{row}}</h3><br>
-        		        {% endfor %}
+                        <div id="set"  class="panel-body" style="height:510px;overflow:auto;" >       
                         </div>
                 </div>
 	</div>
   </div>
 
 </div>
+
+<script>
+function loadSet()
+{
+document.getElementById("set").innerHTML="";
+}
+</script>
 </body>
 </html>
 
