@@ -27,10 +27,11 @@ def view_data(request):
 def dashboard_view(request):
 	if request.user.is_authenticated():
 		template = loader.get_template('json_bridge/dashboard.html')
-		context = RequestContext(request, {})
+		context = RequestContext(request, {'user':request.session['username']})
 		return HttpResponse(template.render(context))
 	else:
 		return HttpResponseRedirect('/')
+
 
 #authentication
 
@@ -40,6 +41,7 @@ def auth_view(request):
 	user=authenticate(username=username,password=password)
 	if user is not None:
 		login(request,user)
+		request.session['username']=username
 		return HttpResponseRedirect('/dashboard/') 
 	else:
 		return HttpResponseRedirect('/')

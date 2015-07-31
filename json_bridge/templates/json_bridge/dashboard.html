@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<title>Dashboard|datahub</title>
 <link rel="stylesheet" type="text/css" href="{% static 'json_bridge/css/bootstrap.min.css' %}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="{% static 'json_bridge/js/bootstrap.min.js' %}"></script>
@@ -12,7 +13,7 @@
   <nav class="navbar navbar-inverse">
    <div class="container-fluid">
      <div class="navbar-header">
-       <a class="navbar-brand" href="#">DataHub</a>
+       <a class="navbar-brand" href="#">DataHub | {{user}}</a>
      </div>
    <form class="navbar-form navbar-right">
 	<a href="/logout/"><button type="button" class="btn btn-default"  >logout</button></a>
